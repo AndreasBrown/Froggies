@@ -1,0 +1,38 @@
+﻿@{
+	string controllerName = this.ViewContext.RouteData.Values["controller"].ToString();
+	string actionName = this.ViewContext.RouteData.Values["action"].ToString();
+
+	string lessFullPath = $@"/Areas/{controllerName}/{actionName}/{actionName}.less";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>@(controllerName).@actionName</title>
+
+	<!-- FONT -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+
+	@*@if (System.IO.File.Exists(".." + lessFullPath))
+	{*@
+		<!-- LESS -->
+		<link rel="stylesheet/less" type="text/css" href="@lessFullPath" />
+		<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
+	
+</head>
+
+<body>
+
+	<div class="area-@controllerName.ToLower()-@actionName.ToLower()">
+		@this.RenderBody()
+	</div>
+
+
+	<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+			crossorigin="anonymous"
+			integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+	</script>
+</body>
+</html>
