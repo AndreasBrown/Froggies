@@ -15,17 +15,19 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
 
-	@*@if (System.IO.File.Exists(".." + lessFullPath))
-	{*@
-		<!-- LESS -->
-		<link rel="stylesheet/less" type="text/css" href="@lessFullPath" />
-		<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
-	
+	@* TODO: Проверка на существование лесски. *@
+
+	<!-- LESS -->
+	<link rel="stylesheet/less" type="text/css" href="/content/less/reset.less" />
+	<link rel="stylesheet/less" type="text/css" href="/content/less/layout.less" />
+	<link rel="stylesheet/less" type="text/css" href="@lessFullPath" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
+
 </head>
 
 <body>
 
-	<div class="area-@controllerName.ToLower()-@actionName.ToLower()">
+	<div class="area-@controllerName.ToLower()-@actionName.ToLower() page-content">
 		@this.RenderBody()
 	</div>
 

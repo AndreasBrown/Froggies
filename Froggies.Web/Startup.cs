@@ -13,14 +13,13 @@ namespace Froggies.Web
 {
 	public class Startup
 	{
+		public IConfiguration Configuration { get; }
+
 		public Startup(IConfiguration configuration)
 		{
 			this.Configuration = configuration;
 		}
 
-		public IConfiguration Configuration { get; }
-
-		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.Configure<CookiePolicyOptions>(options =>
@@ -33,14 +32,13 @@ namespace Froggies.Web
 
 			services.Configure<RazorViewEngineOptions>(o =>
 			{
-				o.AreaViewLocationFormats.Clear();
-				o.AreaViewLocationFormats.Add("/Areas/{2}/{0}/{0}" + RazorViewEngine.ViewExtension);
+				o.AreaViewLocationFormats.Add("/Areas/{2}/{0}/{0}" + RazorViewEngine.ViewExtension); // Partials
+				o.AreaViewLocationFormats.Add("/Areas/{2}/{0}"	   + RazorViewEngine.ViewExtension); // ViewComponents
 			});
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 		}
-
-		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+		
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 		{
 			if (env.IsDevelopment())
@@ -49,28 +47,29 @@ namespace Froggies.Web
 			}
 			else
 			{
-				app.UseExceptionHandler("/Home/Error");
+				app.UseExceptionHandler("/Home/Error"); // TODO: Создать страницу ошибки.
 				app.UseHsts();
 			}
 
 			app.UseHttpsRedirection();
 			app.UseCookiePolicy();
 
-			var lessTypeProvider = new FileExtensionContentTypeProvider();
-			lessTypeProvider.Mappings[".less"] = "text/css";
+			var typeProvider = new FileExtensionContentTypeProvider();
+			typeProvider.Mappings[".less"] = "text/css";
+
 			app.UseStaticFiles(new StaticFileOptions
 			{
 				FileProvider = new PhysicalFileProvider(Directory.GetCurrentDirectory() + "/Areas"),
-				ContentTypeProvider = lessTypeProvider,
+				ContentTypeProvider = typeProvider,
 				RequestPath = "/Areas"
 			});
 
-			//app.UseMvc(routes =>
-			//{
-			//	routes.MapRoute(
-			//		name: "default",
-			//		template: "{controller=Home}/{action=Index}/{id?}");
-			//});
+			app.UseStaticFiles(new StaticFileOptions
+			{
+				FileProvider = new PhysicalFileProvider(Directory.GetCurrentDirectory() + "/Content"),
+				ContentTypeProvider = typeProvider,
+				RequestPath = "/Content"
+			});
 
 			app.UseMvc(routes =>
 			{

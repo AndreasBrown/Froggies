@@ -11,10 +11,10 @@ namespace Froggies.Web.Areas.Login
 			return this.View();
 		}
 
-		[Route("test/{test}")]
-		public IActionResult Test(string test)
+		[Route("register")]
+		public IActionResult Register()
 		{
-			return this.Content(test);
+			return this.View();
 		}
 	}
 }

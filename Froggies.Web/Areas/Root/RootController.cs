@@ -6,9 +6,9 @@ namespace Froggies.Web.Areas.Root
 	[Route("")]
 	public class RootController : Controller
     {
-        public string Root()
+        public IActionResult Root()
         {
-            return "Пошел нахуй пидор.";
+			return this.View();
         }
     }
 }
