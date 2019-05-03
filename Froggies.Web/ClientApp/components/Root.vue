@@ -14,6 +14,11 @@
 
 @import url('../reset.less');
 
+
+// TODO:
+
+// layout.less
+
 body {
 	display: flex;
 	justify-content: center;
@@ -33,9 +38,31 @@ body {
 	background-color: white;
 	width: 100%;
 	height: 100%;
-    display: flex;
 
 	font-family: 'Roboto';
+}
+
+// ---
+
+// shared.less
+
+.auth-card {
+    width: 300px;
+    padding: 40px;
+    background: #68c72f;
+    border-bottom: 5px solid #3b9c00;
+
+    input {
+        height: 50px;
+        font-size: 20px;
+
+        &[type=text], &[type=password] {
+            width: 100%;
+            padding-left: 20px;
+            box-sizing: border-box;
+            border-top: 3px solid #3b9c00;
+        }
+    }
 }
 
 .yellow-button {
@@ -50,5 +77,7 @@ body {
     justify-content: center;
     padding: 0 23px;
 }
+
+// ---
 
 </style>

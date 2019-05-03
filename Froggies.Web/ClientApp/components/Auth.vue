@@ -1,6 +1,6 @@
 <template>
 
-    <section class="auth-c">
+    <section class="c-auth">
 
         <div class="login-form auth-card">
 
@@ -13,7 +13,7 @@
 
 
         <div class="or-register auth-card">
-            <a href="/auth/register" class="or-register__register-button yellow-button">Зарегистрироваться!</a>
+            <router-link to="/auth/register" class="or-register__register-button yellow-button">Зарегистрироваться!</router-link>
         </div>
 
     </section>
@@ -28,33 +28,14 @@
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-
-	.auth-card {
-        width: 300px;
-        padding: 40px;
-        background: #68c72f;
-        border-bottom: 5px solid #3b9c00;
-	}
-
-	.login-form {
-		margin-top: -150px;
-
-		input {
-			height: 50px;
-			font-size: 20px;
-
-			&[type=text], &[type=password] {
-				width: 100%;
-				padding-left: 20px;
-				box-sizing: border-box;
-				border-top: 3px solid #3b9c00;
-			}
-		}
-
-		&__password, &__submit { margin-top: 30px; }
-	}
-
-	.or-register { margin-top: 30px; }
 }
+
+.login-form {
+    margin-top: -150px; // чего
+
+    input:not(:first-child) { margin-top: 30px; }
+}
+
+.or-register { margin-top: 30px; }
 
 </style>
