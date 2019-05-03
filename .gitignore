@@ -19,3 +19,8 @@
 [Pp]ackages/
 [Bb]in/
 [Dd]ebug/
+
+built/
+node_modules/
+Froggies.Web/wwwroot/dist/
+/Froggies.Web/package-lock.json
