@@ -1,10 +1,12 @@
 ﻿using System.IO;
+using Froggies.Web.DB;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
@@ -28,7 +30,11 @@ namespace Froggies.Web
 				options.CheckConsentNeeded = context => true;
 				options.MinimumSameSitePolicy = SameSiteMode.None;
 			});
-		}
+
+            var connectionString = this.Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
+
+        }
 		
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 		{
