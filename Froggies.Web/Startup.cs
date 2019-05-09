@@ -34,6 +34,7 @@ namespace Froggies.Web
             var connectionString = this.Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
 
+            services.AddMvc();
         }
 		
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -42,6 +43,8 @@ namespace Froggies.Web
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
+
+            app.UseMvc();
 
 			var typeProvider = new FileExtensionContentTypeProvider();
 			typeProvider.Mappings[".less"] = "text/css";

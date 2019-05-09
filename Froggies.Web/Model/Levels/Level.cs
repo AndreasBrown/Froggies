@@ -6,7 +6,7 @@ namespace Froggies.Web.Model.Levels
 {
     public class Level : Entity
     {
-        private Cell[][] _cells { get; set; }
+        private Cell[][] _cells;
 
         [NotMapped]
         public Cell[][] Cells

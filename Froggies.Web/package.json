@@ -8,7 +8,8 @@
 	"dependencies": {
 		"css-loader": "^2.1.1",
 		"vue": "^2.5.13",
-		"vue-router": "3.0.6"
+		"vue-router": "3.0.6",
+		"vue-property-decorator": "8.1.1"
 	},
 	"devDependencies": {
 		"less": "^3.9.0",

@@ -3,12 +3,28 @@
 	<div class="page-content">
 		
         <!-- <router-link to="/auth">Прыг-скок.</router-link> -->
+        
+        <LevelsList />
 
 		<router-view></router-view>
 
 	</div>
 
 </template>
+
+<script lang="ts">
+import { Vue, Component } from "vue-property-decorator";
+import LevelsList from './LevelsList.vue';
+
+@Component({
+    components: { LevelsList }
+})
+export default class RootComponent extends Vue {
+    
+}
+
+</script>
+
 
 <style lang="less">
 
