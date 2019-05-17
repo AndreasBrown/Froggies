@@ -44,7 +44,10 @@ namespace Froggies.Web
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapSpaFallbackRoute("spa-fallback", new { controller = "Root", action = "Root" });
+            });
 
 			var typeProvider = new FileExtensionContentTypeProvider();
 			typeProvider.Mappings[".less"] = "text/css";

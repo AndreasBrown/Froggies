@@ -8,6 +8,7 @@ import RegisterComponent from "./components/Register.vue";
 Vue.use(VueRouter);
 
 const router = new VueRouter({
+	mode: 'history',
 	routes: [
 		{ path: '/', component: RootComponent },
 		{ path: '/auth', component: AuthComponent },
