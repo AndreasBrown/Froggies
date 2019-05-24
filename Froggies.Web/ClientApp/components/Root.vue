@@ -3,8 +3,6 @@
 	<div class="page-content">
 		
         <!-- <router-link to="/auth">Прыг-скок.</router-link> -->
-        
-        <LevelsList />
 
 		<router-view></router-view>
 

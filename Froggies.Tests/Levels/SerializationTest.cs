@@ -1,11 +1,11 @@
-using Froggies.Web.Model.Levels;
+п»їusing Froggies.Web.Model.Levels;
 using Xunit;
 
 namespace Froggies.Tests.Levels
 {
     public class SerializationTest
     {
-        const string testJson = "[[\"E\",\"N\"],[\"R\",\"G\"]]"; // [["E","G"],["R","N"]]
+        const string testJson = "[[\"E\",\"N\"],[\"R\",\"G\"]]"; // [["E","N"],["R","G"]]
 
         private readonly static Cell[][] testCells = 
         new[]
@@ -33,7 +33,6 @@ namespace Froggies.Tests.Levels
                 CellsJson = testJson
             };
 
-            // Ну это если считать что уровни у нас квадратные.
             int size = testCells.GetLength(0);
 
             for (int i = 0; i < size; i++)

@@ -1,7 +1,17 @@
-<template>
+﻿<template>
     <section>
 
-        
+        <table id='board'>
+            <tr v-for='row in board.Cells'>
+
+                <td v-for='cell in row'>
+                    <div class='square'>
+                        {{cell}}
+                    </div>
+                </td>
+
+            </tr>
+        </table>
 
     </section>
 </template>
@@ -12,12 +22,12 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Level } from '../Model/Level';
 
 @Component({})
-export default class LevelsList extends Vue {
+export default class Editor extends Vue {
 
     @Prop()
-    levelId!: number;
+    readonly levelId!: number;
 
-    board: Level;
+    public board!: Level;
     
     created() {
         fetch('/api/levels/1') // TODO: levelId.
@@ -32,7 +42,7 @@ export default class LevelsList extends Vue {
 </script>
 
 
-<style lang="less" scoped>
+<style lang="less">
 
 
 

@@ -1,7 +1,7 @@
-export enum Cell
+﻿export enum Cell
 {
-    Empty,
-    None,
-    RedFrog,
-    GreenFrog,
+    Empty = 'E',
+    None = 'N',
+    RedFrog = 'R',
+    GreenFrog = 'G',
 }
