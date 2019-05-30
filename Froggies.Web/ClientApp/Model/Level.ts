@@ -1,9 +1,9 @@
-﻿import { Cell } from './Cell';
+﻿import { CellType } from "./CellType";
 
-export class Level {
-    public Cells: Cell[][];
+export default class Level {
+    public Cells: CellType[][];
 
     constructor(cellsJson: JSON) {
-        this.Cells = <Array<Array<Cell>>> (<any>cellsJson);
+        this.Cells = <Array<Array<CellType>>> (<any>cellsJson);
     }
 }

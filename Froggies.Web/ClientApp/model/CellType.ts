@@ -1,4 +1,4 @@
-﻿export enum Cell
+﻿export enum CellType
 {
     Empty = 'E',
     None = 'N',

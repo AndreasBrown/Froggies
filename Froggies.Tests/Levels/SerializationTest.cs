@@ -5,13 +5,12 @@ namespace Froggies.Tests.Levels
 {
     public class SerializationTest
     {
-        const string testJson = "[[\"E\",\"N\"],[\"R\",\"G\"]]"; // [["E","N"],["R","G"]]
+        private const string TestJson = "[[\"E\",\"N\"],[\"R\",\"G\"]]"; // [["E","N"],["R","G"]]
 
-        private readonly static Cell[][] testCells = 
-        new[]
+        private static readonly Cell[][] TestCells =
         {
-            new [] { Cell.Empty, Cell.None },
-            new [] { Cell.RedFrog, Cell.GreenFrog },
+            new[] {Cell.Empty, Cell.None},
+            new[] {Cell.RedFrog, Cell.GreenFrog},
         };
 
         [Fact]
@@ -19,10 +18,10 @@ namespace Froggies.Tests.Levels
         {
             var lvl = new Level
             {
-                Cells = testCells
+                Cells = SerializationTest.TestCells
             };
 
-            Assert.Equal(testJson, lvl.CellsJson);
+            Assert.Equal(TestJson, lvl.CellsJson);
         }
 
         [Fact]
@@ -30,16 +29,16 @@ namespace Froggies.Tests.Levels
         {
             var lvl = new Level
             {
-                CellsJson = testJson
+                CellsJson = SerializationTest.TestJson
             };
 
-            int size = testCells.GetLength(0);
+            int size = TestCells.GetLength(0);
 
             for (int i = 0; i < size; i++)
-                for (int j = 0; j < size; j++)
-                {
-                    Assert.Equal(lvl[i][j], testCells[i][j]);
-                }
+            for (int j = 0; j < size; j++)
+            {
+                Assert.Equal(lvl[i][j], TestCells[i][j]);
+            }
         }
     }
 }

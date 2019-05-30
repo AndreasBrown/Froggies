@@ -1,12 +1,14 @@
 ﻿import Vue from "vue";
 import VueRouter from "vue-router";
+import VueDraggable from 'vue-draggable';
 
-import RootComponent from "./components/Root.vue";
+import RootComponent from './components/Root.vue';
 import AuthComponent from "./components/Auth.vue";
 import RegisterComponent from "./components/Register.vue";
 import Editor from './components/Editor.vue';
 
 Vue.use(VueRouter);
+Vue.use(VueDraggable);
 
 const router = new VueRouter({
 	mode: 'history',
@@ -18,11 +20,8 @@ const router = new VueRouter({
 	]
 });
 
-let v = new Vue( {
+export default new Vue( {
 	el: "#app-root",
-	template: '<RootComponent />',
-	router: router,
-	components: {
-		RootComponent
-	}
+    render: h => h(RootComponent),
+	router: router
 } );

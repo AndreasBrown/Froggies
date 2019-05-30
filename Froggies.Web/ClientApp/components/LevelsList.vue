@@ -1,6 +1,6 @@
 <template>
     <section class="c-levels">
-
+        
         <div class="levelId" v-for="id in levelIds">{{ id }}</div>
 
     </section>
@@ -11,9 +11,9 @@
 import { Vue, Component } from 'vue-property-decorator';
 
 @Component({})
-export default class LevelsList extends Vue {
+    export default class LevelsList extends Vue {
 
-    levelIds: Array<number> = [];
+    levelIds!: number[];
     
     created() {
         fetch('/api/levels/ids')

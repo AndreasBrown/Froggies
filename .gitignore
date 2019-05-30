@@ -24,3 +24,4 @@ built/
 node_modules/
 Froggies.Web/wwwroot/dist/
 /Froggies.Web/package-lock.json
+.idea/
