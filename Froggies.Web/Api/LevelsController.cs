@@ -1,6 +1,7 @@
 ﻿using Froggies.Web.DB;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Froggies.Web.Api
 {
@@ -21,9 +22,9 @@ namespace Froggies.Web.Api
         }
 
         [Route("{id:int}")]
-        public IActionResult LoadLevel(int id)
+        public async Task<IActionResult> LoadLevel(int id)
         {
-            var lvl = this.Context.Levels.FirstOrDefault(x => x.Id == id);
+            var lvl = await this.Context.Levels.FindAsync(id);
 
             if (lvl == null)
                 return this.BadRequest("Level not found.");

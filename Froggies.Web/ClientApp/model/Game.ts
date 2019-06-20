@@ -1,6 +1,6 @@
-﻿import { CellType } from "./CellType";
+﻿import CellType from "./CellType";
 
-export default class Level {
+export default class Game {
     public Cells: CellType[][];
 
     constructor(cellsJson: JSON) {

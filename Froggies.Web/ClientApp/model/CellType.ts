@@ -5,3 +5,5 @@
     RedFrog = 'R',
     GreenFrog = 'G',
 }
+
+export default CellType;

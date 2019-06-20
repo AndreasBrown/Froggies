@@ -7,6 +7,7 @@ import AuthComponent from "./components/Auth.vue";
 import RegisterComponent from "./components/Register.vue";
 import Editor from './components/Editor.vue';
 
+Vue.config.productionTip = false;
 Vue.use(VueRouter);
 Vue.use(VueDraggable);
 
