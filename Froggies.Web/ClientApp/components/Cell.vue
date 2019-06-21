@@ -36,8 +36,8 @@
         readonly dragOptions!: FrogDragOptions;
 
         onDrop(dropEvent: any) {
-            // if (this.hasFrog)
-            //     return;
+            if (dropEvent.toElement.childElementCount)
+                return;
 
             let droppedFrogId = dropEvent.dataTransfer.getData('frog');
             
@@ -49,11 +49,6 @@
 
         allowDrop(e: any) {
             e.preventDefault();
-        }
-
-        // TODO: Не обновляется при добавлении/удалении лягухи в эту клетку.
-        get hasFrog(): boolean {
-            return !!(<any>this.$refs.frog);
         }
 
         get isGreenFrog(): boolean { return this.CurrentCell === CellType.GreenFrog; }

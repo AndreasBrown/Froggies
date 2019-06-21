@@ -41,6 +41,7 @@
 
             options.onDragStart = (e: any) => {
                 e.dataTransfer.setData('frog', e.target.id);
+                // TODO: .setData('fromCell', ...)
                 console.log({start: e});
             }
             options.onDragEnd = (e: any) => console.log({end: e});
