@@ -39,13 +39,6 @@
         onDrop(dropEvent: any) {
             const droppedFrogId: string = dropEvent.dataTransfer.getData('frog');
             this.$emit('drop', { position: this.position, droppedFrogId });
-
-            // if (dropEvent.toElement.childElementCount
-            // || dropEvent.toElement.classList.contains('frog'))
-            //     return;
-            
-            // let frogEl = document.getElementById(droppedFrogId);
-            // dropEvent.target.appendChild(frogEl);
         }
 
         dragOver(e: any) {
