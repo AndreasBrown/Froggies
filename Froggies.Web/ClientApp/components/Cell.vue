@@ -98,14 +98,14 @@
         background: #1155AA;
         border: 1px solid #ccAA99;
 
-        display: flex;
-        flex-shrink: 0;
-        justify-content: center;
-        align-items: center;
+        border-radius: 30px;
         
         &--none {
-            
+            visibility: hidden;
         }
+
+        vertical-align: middle;
+        .frog { margin: auto; }
     }
     
     .empty {

@@ -41,14 +41,7 @@
         display: table;
 
         &-row { display: table-row }
-        & &-cell { 
-            display: table-cell;
-            vertical-align: middle;
-
-            .frog {
-                margin: auto;
-            }
-        }
+        & &-cell { display: table-cell }
     }
     
 
