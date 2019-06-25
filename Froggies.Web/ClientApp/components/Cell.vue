@@ -1,8 +1,8 @@
 <template>
-    <div :class="`cell ${cellDefaultClass} ${cellPropClass}`" @drop="onDrop" @dragover="allowDrop">
+    <div :class="`cell ${cellDefaultClass} ${cellPropClass}`" @drop="onDrop" @dragover="dragOver">
         
         <div v-if="isGreenFrog || isRedFrog"
-            :id="cellId"
+             :id="cellId"
              :class="`${frogDefaultClass} ${frogPropClass}`"
              @dragstart="dragOptions.onDragStart"
              @dragend="dragOptions.onDragEnd" draggable="true" ref="frog">
@@ -24,7 +24,7 @@
         readonly cellId!: string;
 
         @Prop()
-        readonly CurrentCell!: CellType;
+        readonly currentCell!: CellType;
 
         @Prop()
         readonly cellClass!: string;
@@ -36,29 +36,28 @@
         readonly dragOptions!: FrogDragOptions;
 
         onDrop(dropEvent: any) {
-            if (dropEvent.toElement.childElementCount)
+            if (dropEvent.toElement.childElementCount
+            || dropEvent.toElement.classList.contains('frog'))
                 return;
 
             let droppedFrogId = dropEvent.dataTransfer.getData('frog');
             
             let frogEl = document.getElementById(droppedFrogId);
             dropEvent.target.appendChild(frogEl);
-
-            console.log({dropEvent});
         }
 
-        allowDrop(e: any) {
+        dragOver(e: any) {
             e.preventDefault();
         }
 
-        get isGreenFrog(): boolean { return this.CurrentCell === CellType.GreenFrog; }
-        get isRedFrog(): boolean { return this.CurrentCell === CellType.RedFrog; }
+        get isGreenFrog(): boolean { return this.currentCell === CellType.GreenFrog; }
+        get isRedFrog(): boolean { return this.currentCell === CellType.RedFrog; }
 
         get cellPropClass() : string { return this.cellClass ? this.cellClass : ''; }
         get frogPropClass() : string { return this.frogClass ? this.frogClass : ''; }
 
         get cellDefaultClass() : string {
-            switch (this.CurrentCell) {
+            switch (this.currentCell) {
                 case CellType.None:
                     return 'cell--none';
                 case CellType.Empty:
@@ -69,7 +68,7 @@
         }
         
         get frogDefaultClass() : string {
-            switch (this.CurrentCell) {
+            switch (this.currentCell) {
                 case CellType.GreenFrog:
                     return 'frog green-frog';
                 case CellType.RedFrog:
@@ -112,7 +111,7 @@
     }
 
     .red-frog, .green-frog {
-        @frogSize: 40px;
+        @frogSize: 50px;
 
         width: @frogSize;
         height: @frogSize;

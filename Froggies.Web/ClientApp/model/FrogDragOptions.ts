@@ -1,9 +1,9 @@
 export default class FrogDragOptions {
-    public dropzoneSelector!: string;
+    public dropzoneSelector?: string
 
-    public onDragStart: Function = function() {}
+    public onDragStart?: (e: any) => void;
     
-    public onDrag: Function = function() {}
+    public onDrag?: (e: any) => void;
     
-    public onDragEnd: Function = function() {}
+    public onDragEnd?: (e: any) => void;
 }

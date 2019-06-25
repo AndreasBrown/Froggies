@@ -1,15 +1,13 @@
 ﻿<template>
     <section>
-        <h1> EDITOR </h1>
-
         <div class="board" v-if="board.Cells">
 
-            <div class="board-row" v-for="(row, i) in board.Cells" v-bind:key="'EDITOR-ROW_' + i">
+            <div class="board-row" v-for="(row, i) in board.Cells" :key="'EDITOR-ROW_' + i">
 
                 <Cell v-for='(cell, j) in row' 
-                        :CurrentCell="cell" :cellClass="'board-cell'"
+                        :currentCell="cell" cellClass="board-cell"
                         :cellId="'FROG-' + cell + i + j"
-                        v-bind:key="'EDITOR-CELL_' + cell + i + j"
+                        :key="'EDITOR-CELL_' + cell + i + j"
                         :dragOptions="frogDragOptions"/>
 
             </div>
@@ -37,25 +35,23 @@
         board: Game = new Game(<any>[]);
 
         get frogDragOptions(): FrogDragOptions {
-            const options = new FrogDragOptions();
+            return {
+                dropzoneSelector: '.board-cell',
 
-            options.onDragStart = (e: any) => {
-                e.dataTransfer.setData('frog', e.target.id);
-                // TODO: .setData('fromCell', ...)
-                console.log({start: e});
-            }
-            options.onDragEnd = (e: any) => console.log({end: e});
+                onDrag() {},
 
-            // TODO: почему ts не видит стринг проп.
-            (options as any).dropzoneSelector = '.board-cell';
-            
+                onDragStart(e: any) {
+                    e.dataTransfer.setData('frog', e.target.id);
+                    //console.log({start: e});
+                },
 
-            return options;
+                onDragEnd(e: any){
+                    //console.log({end: e});
+                }
+            };
         }
         
         created() {
-            console.log({opt: this.frogDragOptions});
-
             fetch('/api/levels/1') // TODO: levelId.
                 .then(resp => resp.json())
                 .then(json => {
@@ -75,7 +71,14 @@
         display: table;
 
         &-row { display: table-row }
-        & /deep/ &-cell { display: table-cell }
+        & /deep/ &-cell { 
+            display: table-cell;
+            vertical-align: middle;
+
+            .frog {
+                margin: auto;
+            }
+        }
     }
     
 
