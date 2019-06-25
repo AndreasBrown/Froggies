@@ -5,7 +5,7 @@
              :id="cellId"
              :class="`${frogDefaultClass} ${frogPropClass}`"
              @dragstart="dragOptions.onDragStart"
-             @dragend="dragOptions.onDragEnd" draggable="true" ref="frog">
+             draggable="true" ref="frog">
         
         </div>
         
@@ -17,12 +17,10 @@
     import {Component, Prop, Vue} from "vue-property-decorator";
     import CellType from "../model/CellType";
     import FrogDragOptions from '../model/FrogDragOptions';
+    import Point from "../model/Point";
 
     @Component({})
     export default class Cell extends Vue {
-        @Prop()
-        readonly cellId!: string;
-
         @Prop()
         readonly currentCell!: CellType;
 
@@ -35,19 +33,27 @@
         @Prop()
         readonly dragOptions!: FrogDragOptions;
 
-        onDrop(dropEvent: any) {
-            if (dropEvent.toElement.childElementCount
-            || dropEvent.toElement.classList.contains('frog'))
-                return;
+        @Prop()
+        readonly position!: Point;
 
-            let droppedFrogId = dropEvent.dataTransfer.getData('frog');
+        onDrop(dropEvent: any) {
+            const droppedFrogId: string = dropEvent.dataTransfer.getData('frog');
+            this.$emit('drop', { position: this.position, droppedFrogId });
+
+            // if (dropEvent.toElement.childElementCount
+            // || dropEvent.toElement.classList.contains('frog'))
+            //     return;
             
-            let frogEl = document.getElementById(droppedFrogId);
-            dropEvent.target.appendChild(frogEl);
+            // let frogEl = document.getElementById(droppedFrogId);
+            // dropEvent.target.appendChild(frogEl);
         }
 
         dragOver(e: any) {
             e.preventDefault();
+        }
+
+        get cellId(): string {
+            return 'FROG-' + this.currentCell + this.position.Y + this.position.X;
         }
 
         get isGreenFrog(): boolean { return this.currentCell === CellType.GreenFrog; }

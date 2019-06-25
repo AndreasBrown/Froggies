@@ -5,7 +5,7 @@ import VueDraggable from 'vue-draggable';
 import RootComponent from './components/Root.vue';
 import AuthComponent from "./components/Auth.vue";
 import RegisterComponent from "./components/Register.vue";
-import Editor from './components/Editor.vue';
+import Play from './components/Play.vue';
 
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
@@ -17,7 +17,7 @@ const router = new VueRouter({
 		{ path: '/', component: RootComponent },
 		{ path: '/auth', component: AuthComponent },
 		{ path: '/auth/register', component: RegisterComponent },
-		{ path: '/editor', component: Editor },
+		{ path: '/play', component: Play },
 	]
 });
 
