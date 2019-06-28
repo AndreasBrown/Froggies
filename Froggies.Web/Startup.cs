@@ -54,10 +54,10 @@ namespace Froggies.Web
 
 			app.UseStaticFiles(new StaticFileOptions
 			{
-				FileProvider = new PhysicalFileProvider(Directory.GetCurrentDirectory() + "/Content"),
+				FileProvider = new PhysicalFileProvider(Directory.GetCurrentDirectory() + "/Assets"),
 				ContentTypeProvider = typeProvider,
-				RequestPath = "/Content"
-			});
+				RequestPath = "/Assets"
+            });
 
 		}
 	}

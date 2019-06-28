@@ -43,7 +43,6 @@
 
                 onDragStart(e: any) {
                     e.dataTransfer.setData('frog', e.target.id);
-                    //console.log({start: e});
                 },
 
                 onDragEnd: (e: any) => {

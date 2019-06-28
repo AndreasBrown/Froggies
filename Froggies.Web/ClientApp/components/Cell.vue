@@ -83,15 +83,12 @@
 <style lang="less" scoped>
 
     .cell {
-        @cellSize: 80px;
+        @cellSize: 131px; // взорвётся если поставить другое. а надо для адаптива/резины
 
         width: @cellSize;
         height: @cellSize;
 
-        background: #1155AA;
-        border: 1px solid #ccAA99;
-
-        border-radius: 30px;
+        background: url('/Assets/lily.svg') no-repeat;
         
         &--none {
             visibility: hidden;
@@ -100,20 +97,14 @@
         vertical-align: middle;
         .frog { margin: auto; }
     }
-    
-    .empty {
-        &:extend(.cell);
-        
-        border: 4px solid #00844c;
-        border-radius: 50%;
-        z-index: 1;
-    }
 
     .red-frog, .green-frog {
         @frogSize: 50px;
 
         width: @frogSize;
         height: @frogSize;
+
+        border: 3px solid #9ee1fe; // временный прикол
     }
 
     .red-frog {

@@ -22,7 +22,7 @@
 // Это повторяется здесь и в Auth.vue
 // С этим было бы круто что-то сделать.
 .page-content {
-	background: #6dacdc;
+	background: #9ee1fe;
 	display: flex;
 	align-items: center;
 	justify-content: center;
