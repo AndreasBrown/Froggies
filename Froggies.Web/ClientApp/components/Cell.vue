@@ -83,15 +83,21 @@
 <style lang="less" scoped>
 
     .cell {
-        @cellSize: 131px; // взорвётся если поставить другое. а надо для адаптива/резины
+        @cellSize: 110px;
 
         width: @cellSize;
         height: @cellSize;
 
         background: url('/Assets/lily.svg') no-repeat;
+        background-size: contain;
         
         &--none {
             visibility: hidden;
+        }
+
+        &--empty, &--with-frog {
+            filter: drop-shadow( 3px 4px 2px rgba(0, 0, 0, 0.6));
+            -webkit-filter: drop-shadow( 3px 4px 2px rgba(0, 0, 0, 0.6));
         }
 
         vertical-align: middle;
