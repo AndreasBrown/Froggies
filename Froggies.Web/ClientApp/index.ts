@@ -17,7 +17,7 @@ const router = new VueRouter({
 		{ path: '/', component: RootComponent },
 		{ path: '/auth', component: AuthComponent },
 		{ path: '/auth/register', component: RegisterComponent },
-		{ path: '/play', component: Play },
+		{ path: '/play/:levelId', component: Play, props: true },
 	]
 });
 

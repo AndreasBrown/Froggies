@@ -25,7 +25,7 @@
         board: Game = new Game(<any>[]);
         
         async created() {
-            const resp = await fetch('/api/levels/1') // TODO: levelId.
+            const resp = await fetch('/api/levels/' + this.levelId);
             const json = await resp.json();
             this.board = new Game(json);
         }
