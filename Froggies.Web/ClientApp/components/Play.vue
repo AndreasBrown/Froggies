@@ -26,6 +26,12 @@
         
         async created() {
             const resp = await fetch('/api/levels/' + this.levelId);
+
+            if (resp.status === 400) {
+                alert('Такого уровня не существует.');
+                return;
+            }
+            
             const json = await resp.json();
             this.board = new Game(json);
         }
