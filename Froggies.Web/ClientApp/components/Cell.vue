@@ -1,5 +1,5 @@
 <template>
-    <div :class="`cell ${cellDefaultClass} ${cellPropClass}`" @drop="onDrop" @dragover="dragOver">
+    <div :class="`cell ${cellDefaultClass} ${cellPropClass}`" @drop="onDrop" @dragover.prevent>
         
         <div v-if="isGreenFrog || isRedFrog"
              :id="cellId"
@@ -39,10 +39,6 @@
         onDrop(dropEvent: any) {
             const droppedFrogId: string = dropEvent.dataTransfer.getData('frog');
             this.$emit('drop', { position: this.position, droppedFrogId });
-        }
-
-        dragOver(e: any) {
-            e.preventDefault();
         }
 
         get cellId(): string {

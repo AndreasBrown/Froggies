@@ -6,6 +6,7 @@ import RootComponent from './components/Root.vue';
 import AuthComponent from "./components/Auth.vue";
 import RegisterComponent from "./components/Register.vue";
 import Play from './components/Play.vue';
+import LevelsList from './components/LevelsList.vue';
 
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
@@ -17,6 +18,7 @@ const router = new VueRouter({
 		{ path: '/', component: RootComponent },
 		{ path: '/auth', component: AuthComponent },
 		{ path: '/auth/register', component: RegisterComponent },
+		{ path: '/levels', component: LevelsList },
 		{ path: '/play/:levelId', component: Play, props: true },
 	]
 });

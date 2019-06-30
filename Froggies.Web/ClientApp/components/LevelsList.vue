@@ -13,15 +13,13 @@ import { Vue, Component } from 'vue-property-decorator';
 @Component({})
     export default class LevelsList extends Vue {
 
-    levelIds!: number[];
+    levelIds: number[] = [];
     
-    created() {
-        fetch('/api/levels/ids')
-            .then(resp => resp.json())
-            .then(json => { 
-                this.levelIds = json;
-                console.log(json)
-            });
+    async created() {
+        let resp = await fetch('/api/levels/ids');
+        let json = await resp.json();
+        this.levelIds = json;
+        console.log(json);
     }
 
 }
