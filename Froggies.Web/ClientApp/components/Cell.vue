@@ -105,20 +105,21 @@
     }
 
     .red-frog, .green-frog {
-        @frogSize: 50px;
+        width: 81px;
+        height: 91px;
+        background-size: contain;
+        background-repeat: no-repeat;
 
-        width: @frogSize;
-        height: @frogSize;
-
-        border: 3px solid #9ee1fe; // временный прикол
+        filter: drop-shadow( 3px 4px 2px rgba(0, 0, 0, 0.5));
+        -webkit-filter: drop-shadow( 3px 4px 2px rgba(0, 0, 0, 0.5));
     }
 
     .red-frog {
-        background-color: #cc2222
+        background-image: url('/Assets/frog-red.svg');
     }
 
     .green-frog {
-        background-color: #22cc22
+        background-image: url('/Assets/frog.svg');
     }
     
 </style>
