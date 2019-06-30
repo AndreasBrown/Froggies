@@ -15,7 +15,7 @@ Vue.use(VueDraggable);
 const router = new VueRouter({
 	mode: 'history',
 	routes: [
-		{ path: '/', component: RootComponent },
+		{ path: '/', redirect: '/levels' },
 		{ path: '/auth', component: AuthComponent },
 		{ path: '/auth/register', component: RegisterComponent },
 		{ path: '/levels', component: LevelsList },

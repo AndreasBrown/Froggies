@@ -28,7 +28,6 @@ export default class RootComponent extends Vue {
 
 @import url('../reset.less');
 
-
 // TODO:
 
 // layout.less
@@ -44,7 +43,7 @@ body {
 
 	background-color: #fafeff;
 	
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 14px;
 }
 
@@ -53,7 +52,7 @@ body {
 	width: 100%;
 	height: 100%;
 
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 }
 
 // ---
