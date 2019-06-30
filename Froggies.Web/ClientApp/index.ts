@@ -2,7 +2,7 @@
 import VueRouter from "vue-router";
 import VueDraggable from 'vue-draggable';
 
-import RootComponent from './components/Root.vue';
+import AppComponent from './components/App.vue';
 import AuthComponent from "./components/Auth.vue";
 import RegisterComponent from "./components/Register.vue";
 import Play from './components/Play.vue';
@@ -25,6 +25,6 @@ const router = new VueRouter({
 
 export default new Vue( {
 	el: "#app-root",
-    render: h => h(RootComponent),
+    render: h => h(AppComponent),
 	router: router
 } );

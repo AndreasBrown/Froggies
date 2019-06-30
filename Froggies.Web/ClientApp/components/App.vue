@@ -2,23 +2,22 @@
 
 	<div class="page-content">
 		
-        <!-- <router-link to="/auth">Прыг-скок.</router-link> -->
-
-		<router-view></router-view>
-
+        <transition name="router-anim"
+                    mode="out-in"
+                    enter-active-class="animated fadeInLeft" 
+                    leave-active-class="animated fadeOutRight">
+		    <router-view></router-view>
+        </transition>
 	</div>
 
 </template>
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import LevelsList from './LevelsList.vue';
 
-@Component({
-    components: { LevelsList }
-})
-export default class RootComponent extends Vue {
-    
+@Component({})
+export default class AppComponent extends Vue {
+
 }
 
 </script>
@@ -29,8 +28,23 @@ export default class RootComponent extends Vue {
 @import url('../reset.less');
 
 // TODO:
-
 // layout.less
+
+// -- animations --
+@import 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css';
+.fadeInLeft {
+    -webkit-animation-name: fadeInLeft;
+    animation-name: fadeInLeft;
+    -webkit-animation-duration: 250ms;
+    animation-duration: 250ms;
+}
+
+.fadeOutRight {
+    -webkit-animation-name: fadeOutRight;
+    animation-name: fadeOutRight;
+    -webkit-animation-duration: 250ms;
+    animation-duration: 250ms;
+}
 
 body {
 	display: flex;
