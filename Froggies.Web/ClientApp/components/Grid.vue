@@ -1,6 +1,5 @@
 <template>
     <div class="board">
-
         <div class="board-row" v-for="(row, y) in grid" :key="'ROW-' + y">
 
             <Cell v-for='(cell, x) in row' :key="'CELL-' + cell + y + x"
@@ -15,7 +14,7 @@
 </template>
 
 <script lang="ts">
-    import { Component, Prop, Vue } from 'vue-property-decorator';
+    import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
     import Game from '../model/Game';
     import CellType from '../model/CellType';
     import Point from '../model/Point';
@@ -33,6 +32,28 @@
 
         get grid(): CellType[][] {
             return this.game.Cells;
+        }
+
+        @Watch('greenCount')
+        greenCountWatcher(count: number): void {
+            if (count !== 0)
+                return;
+
+            alert('Лягухи кончились, гейм овер!');
+            // TODO: Move to the next level.
+        }
+        
+        get greenCount(): number {
+            let count = 0;
+
+            for (let row of this.grid) {
+                for (let cell of row) {
+                    if (cell === CellType.GreenFrog)
+                        count++;
+                }
+            }
+
+            return count;
         }
 
         get frogDragOptions(): FrogDragOptions {
