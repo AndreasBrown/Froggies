@@ -1,7 +1,15 @@
 ﻿<template>
     <section>
        
-        <Grid :game="board" v-if="board.Cells"/>
+        <Grid :game="board" 
+              @levelCompleted="onLevelCompleted"
+              v-if="board.Cells"/>
+
+        <OverlayAlert v-if="isLevelCompleted"
+                      @dismiss="onLevelCompletedAlertDismiss"
+                      header="Level completed!">
+            congrats dude good job
+        </OverlayAlert>
 
     </section>
 </template>
@@ -13,29 +21,54 @@
     import Game from '../model/Game';
     import FrogDragOptions from '../model/FrogDragOptions';
     import Grid from './Grid.vue';
+    import OverlayAlert from './OverlayAlert.vue';
 
     @Component({
-        components: { Grid }
+        components: { Grid, OverlayAlert }
     })
     export default class Play extends Vue {
 
-        @Prop()
+        @Prop({ type: Number, required: false })
         readonly levelId!: number;
         
+        currentLevel = this.levelId;
         board: Game = new Game(<any>[]);
+
+        isLevelCompleted = false;
         
         async created() {
-            const resp = await fetch('/api/levels/' + this.levelId);
+            await this.loadLevel(this.currentLevel);
+        }
+
+        async loadLevel(level: number) {
+            const resp = await fetch('/api/levels/' + level);
 
             if (resp.status === 400) {
                 alert('Такого уровня не существует.');
-                return;
+                return false;
             }
             
             const json = await resp.json();
+
             this.board = new Game(json);
+            this.currentLevel = level;
+            this.isLevelCompleted = false;
+
+            return true;
         }
-    
+
+        onLevelCompleted() {
+            this.isLevelCompleted = true;
+        }
+
+        async onLevelCompletedAlertDismiss() {
+            console.log('ondismiss');
+
+            const nextLevel = (this.levelId/1) + 1;
+            const isNextLevelLoaded = false && await this.loadLevel(nextLevel); // пока что
+            this.isLevelCompleted = false; // пока что
+            
+        }
     }
 
 </script>

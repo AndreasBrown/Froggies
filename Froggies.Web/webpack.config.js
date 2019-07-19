@@ -25,7 +25,16 @@ module.exports = {
 				use: [
 					'vue-style-loader',
 					'css-loader',
-					'less-loader'
+					'less-loader',
+					{
+						loader: 'style-resources-loader',
+						options: {
+							patterns: [
+								path.resolve(__dirname, './ClientApp/reset.less'),
+								path.resolve(__dirname, './ClientApp/common.less')
+							]
+						}
+					}
 				]
 			},
 			{

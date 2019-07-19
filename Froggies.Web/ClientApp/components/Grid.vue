@@ -39,8 +39,7 @@
             if (count !== 0)
                 return;
 
-            alert('Лягухи кончились, гейм овер!');
-            // TODO: Move to the next level.
+            this.$emit('levelCompleted');
         }
         
         get greenCount(): number {

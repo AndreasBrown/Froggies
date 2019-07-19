@@ -2,7 +2,7 @@
 
     <section class="c-auth">
 
-        <div class="login-form auth-card">
+        <div class="login-form card">
 
             <input type="text" name="login" class="login-form__login" placeholder="Логин" />
             <input type="password" name="password" class="login-form__password" placeholder="Пароль" />
@@ -12,7 +12,7 @@
         </div>
 
 
-        <div class="or-register auth-card">
+        <div class="or-register card">
             <router-link to="/auth/register" class="or-register__register-button yellow-button">Зарегистрироваться!</router-link>
         </div>
 
@@ -31,6 +31,7 @@
 }
 
 .login-form {
+    width: 300px;
     margin-top: -150px; // чего
 
     input:not(:first-child) { margin-top: 30px; }
