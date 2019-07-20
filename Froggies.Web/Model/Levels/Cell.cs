@@ -8,7 +8,7 @@ namespace Froggies.Web.Model.Levels
     public enum Cell
     {
         [EnumMember(Value = "E")] Empty,
-        [EnumMember(Value = "N")] None,
+        [EnumMember(Value = "W")] Water,
         [EnumMember(Value = "R")] RedFrog,
         [EnumMember(Value = "G")] GreenFrog,
     }

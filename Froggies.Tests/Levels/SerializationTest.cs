@@ -5,11 +5,11 @@ namespace Froggies.Tests.Levels
 {
     public class SerializationTest
     {
-        private const string TestJson = "[[\"E\",\"N\"],[\"R\",\"G\"]]"; // [["E","N"],["R","G"]]
+        private const string TestJson = "[[\"E\",\"W\"],[\"R\",\"G\"]]"; // [["E","W"],["R","G"]]
 
         private static readonly Cell[][] TestCells =
         {
-            new[] {Cell.Empty, Cell.None},
+            new[] {Cell.Empty, Cell.Water},
             new[] {Cell.RedFrog, Cell.GreenFrog},
         };
 

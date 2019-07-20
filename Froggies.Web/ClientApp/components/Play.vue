@@ -41,9 +41,9 @@
         }
 
         async loadLevel(level: number) {
-            const resp = await fetch('/api/levels/' + level);
+            const resp = await fetch('/assets/levels/' + level + '.json');
 
-            if (resp.status === 400) {
+            if (resp.status === 404) {
                 alert('Такого уровня не существует.');
                 return false;
             }

@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Froggies.Web.Model.Levels
@@ -22,8 +21,6 @@ namespace Froggies.Web.Model.Levels
             }
         }
 
-        [Required]
-        [Column("Cells")]
         public string CellsJson { get; set; }
 
         public Cell[] this[int row] => this.Cells[row];

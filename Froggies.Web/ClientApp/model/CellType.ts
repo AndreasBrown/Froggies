@@ -1,7 +1,7 @@
 ﻿export enum CellType
 {
     Empty = 'E',
-    None = 'N',
+    Water = 'W',
     RedFrog = 'R',
     GreenFrog = 'G',
 }

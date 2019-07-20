@@ -53,8 +53,8 @@
 
         get cellDefaultClass() : string {
             switch (this.currentCell) {
-                case CellType.None:
-                    return 'cell--none';
+                case CellType.Water:
+                    return 'cell--water';
                 case CellType.Empty:
                     return 'cell--empty';
                 default:
@@ -87,7 +87,7 @@
         background: url('/Assets/lily.svg') no-repeat;
         background-size: contain;
         
-        &--none {
+        &--water {
             visibility: hidden;
         }
 
