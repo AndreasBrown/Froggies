@@ -1,7 +1,10 @@
 ﻿<template>
-    <section>
-       
-        <Grid :game="board" 
+    <section class="play-root">
+        <section class="toolbar">
+            <button class="yellow-button refresh-button" @click="onRefreshClick" />
+        </section>
+
+        <Grid :game="board"
               @levelCompleted="onLevelCompleted"
               v-if="board.Cells"/>
 
@@ -15,9 +18,9 @@
 </template>
 
 <script lang="ts">
-    
+
     import {Component, Prop, Vue} from 'vue-property-decorator';
-    
+
     import Game from '../model/Game';
     import FrogDragOptions from '../model/FrogDragOptions';
     import Grid from './Grid.vue';
@@ -30,12 +33,12 @@
 
         @Prop({ type: Number, required: false })
         readonly levelId!: number;
-        
+
         currentLevel = this.levelId;
-        board: Game = new Game(<any>[]);
+        board = new Game([]);
 
         isLevelCompleted = false;
-        
+
         async created() {
             await this.initCurrentLevel();
         }
@@ -53,8 +56,12 @@
                 alert('Такого уровня не существует.');
                 return null;
             }
-            
+
             return await resp.json();
+        }
+
+        onRefreshClick() {
+            this.initCurrentLevel();
         }
 
         onLevelCompleted() {
@@ -72,19 +79,36 @@
 
 
 <style lang="less" scoped>
-    
+
     /deep/ .board {
         display: table;
 
         &-row { display: table-row }
         & &-cell { display: table-cell }
     }
-    
+
+    .refresh-button {
+        background-image: url('/Assets/refresh.svg');
+        padding: 30px;
+    }
+
+    .toolbar {
+        display: flex;
+        justify-content: center;
+
+        margin-bottom: 20px;
+        border-bottom: 2px;
+        border-color: #ffc617;
+        padding: 10px 20px;
+    }
+
+    .play-root {
+        margin-top: -100px;
+    }
 
     .dragover {
         background-color: #aa77FF
     }
-    
 
 </style>
 

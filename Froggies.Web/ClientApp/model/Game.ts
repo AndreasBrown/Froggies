@@ -1,9 +1,9 @@
-﻿import CellType from "./CellType";
+﻿import CellType from './CellType';
 
 export default class Game {
     public Cells: CellType[][];
 
-    constructor(cellsJson: JSON) {
-        this.Cells = <Array<Array<CellType>>> (<any>cellsJson);
+    constructor(cellsJson: JSON | CellType[][]) {
+        this.Cells = cellsJson as CellType[][];
     }
 }
