@@ -1,5 +1,5 @@
 ﻿import Vue from "vue";
-import VueRouter from "vue-router";
+import VueRouter, { Route } from "vue-router";
 import VueDraggable from 'vue-draggable';
 
 import AppComponent from './components/App.vue';
@@ -19,12 +19,19 @@ const router = new VueRouter({
 		{ path: '/auth', component: AuthComponent },
 		{ path: '/auth/register', component: RegisterComponent },
 		{ path: '/levels', component: LevelsList },
-		{ path: '/play/:levelId', component: Play, props: true },
+		{
+            path: '/play/:levelId',
+            component: Play,
+            props(route: Route) {
+                const { levelId } = route.params;
+                return { levelId: +levelId };
+            }
+        },
 	]
 });
 
-export default new Vue( {
+export default new Vue({
 	el: "#app-root",
     render: h => h(AppComponent),
 	router: router
-} );
+});

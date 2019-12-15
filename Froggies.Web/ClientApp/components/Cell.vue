@@ -48,8 +48,8 @@
         get isGreenFrog(): boolean { return this.currentCell === CellType.GreenFrog; }
         get isRedFrog(): boolean { return this.currentCell === CellType.RedFrog; }
 
-        get cellPropClass() : string { return this.cellClass ? this.cellClass : ''; }
-        get frogPropClass() : string { return this.frogClass ? this.frogClass : ''; }
+        get cellPropClass() : string { return this.cellClass || ''; }
+        get frogPropClass() : string { return this.frogClass || ''; }
 
         get cellDefaultClass() : string {
             switch (this.currentCell) {

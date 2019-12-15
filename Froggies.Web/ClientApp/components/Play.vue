@@ -37,7 +37,13 @@
         isLevelCompleted = false;
         
         async created() {
-            await this.loadLevel(this.currentLevel);
+            await this.initCurrentLevel();
+        }
+
+        async initCurrentLevel() {
+            const json = await this.loadLevel(this.currentLevel);
+            this.board = new Game(json);
+            this.isLevelCompleted = false;
         }
 
         async loadLevel(level: number) {
@@ -45,16 +51,10 @@
 
             if (resp.status === 404) {
                 alert('Такого уровня не существует.');
-                return false;
+                return null;
             }
             
-            const json = await resp.json();
-
-            this.board = new Game(json);
-            this.currentLevel = level;
-            this.isLevelCompleted = false;
-
-            return true;
+            return await resp.json();
         }
 
         onLevelCompleted() {
@@ -62,12 +62,9 @@
         }
 
         async onLevelCompletedAlertDismiss() {
-            console.log('ondismiss');
-
-            const nextLevel = (this.levelId/1) + 1;
+            const nextLevel = this.levelId + 1;
             const isNextLevelLoaded = false && await this.loadLevel(nextLevel); // пока что
             this.isLevelCompleted = false; // пока что
-            
         }
     }
 

@@ -20,7 +20,6 @@
     import Point from '../model/Point';
     import FrogDragOptions from '../model/FrogDragOptions';
     import Cell from './Cell.vue';
-    import { setTimeout } from 'timers';
 
     @Component({
         components: { Cell }
@@ -28,7 +27,7 @@
     export default class Grid extends Vue {
 
         @Prop({required: true})
-        game!: Game;
+        readonly game!: Game;
 
         get grid(): CellType[][] {
             return this.game.Cells;
@@ -66,7 +65,6 @@
                 },
 
                 onDragEnd: (e: any) => {
-                    console.log({end: e});
                     const pos: string = e.droppedFrogId.substring(e.droppedFrogId.length-2);
                     const from: Point = { X: Number(pos[1]), Y: Number(pos[0]) } 
                     this.move(from, e.position);

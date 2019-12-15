@@ -32,18 +32,21 @@ export default class AppComponent extends Vue {
 
 // -- animations --
 @import 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css';
+
+@transitionDuration: 50ms;
+
 .fadeInLeft {
     -webkit-animation-name: fadeInLeft;
     animation-name: fadeInLeft;
-    -webkit-animation-duration: 250ms;
-    animation-duration: 250ms;
+    -webkit-animation-duration: @transitionDuration;
+    animation-duration: @transitionDuration;
 }
 
 .fadeOutRight {
     -webkit-animation-name: fadeOutRight;
     animation-name: fadeOutRight;
-    -webkit-animation-duration: 250ms;
-    animation-duration: 250ms;
+    -webkit-animation-duration: @transitionDuration;
+    animation-duration: @transitionDuration;
 }
 
 // ---

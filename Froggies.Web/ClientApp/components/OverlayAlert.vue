@@ -23,16 +23,15 @@
 </template>
 
 <script lang="ts">
-    import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+    import { Component, Prop, Vue } from 'vue-property-decorator';
 
     @Component({})
     export default class OverlayAlert extends Vue {
         @Prop({ type: String, required: false })
-        header!: string;
+        readonly header!: string;
 
         onOkClick() {
             this.$emit('dismiss');
-            console.log('ok click');
         }
     }
 
@@ -40,6 +39,22 @@
 
 <style lang="less" scoped>
     @import 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css';
+
+    @transitionDuration: 50ms;
+
+    .fadeInDown {
+        -webkit-animation-name: fadeInDown;
+        animation-name: fadeInDown;
+        -webkit-animation-duration: @transitionDuration;
+        animation-duration: @transitionDuration;
+    }
+
+    .fadeOutUp {
+        -webkit-animation-name: fadeOutUp;
+        animation-name: fadeOutUp;
+        -webkit-animation-duration: @transitionDuration;
+        animation-duration: @transitionDuration;
+    }
 
     .overlay {
         position: absolute;
