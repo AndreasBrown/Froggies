@@ -1,12 +1,13 @@
 ﻿import Vue from "vue";
 import VueRouter, { Route } from "vue-router";
 import VueDraggable from 'vue-draggable';
+import store from './core/store';
 
 import AppComponent from './components/App.vue';
 import AuthComponent from "./components/Auth.vue";
 import RegisterComponent from "./components/Register.vue";
 import Play from './components/Play.vue';
-import LevelsList from './components/LevelsList.vue';
+import LevelsList from './components/LevelsList/LevelsList.vue';
 
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
@@ -33,5 +34,6 @@ const router = new VueRouter({
 export default new Vue({
 	el: "#app-root",
     render: h => h(AppComponent),
-	router: router
+    router,
+    store,
 });

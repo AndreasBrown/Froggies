@@ -66,6 +66,7 @@
 
         onLevelCompleted() {
             this.isLevelCompleted = true;
+            this.$store.commit('completeLevel', this.levelId);
         }
 
         async onLevelCompletedAlertDismiss() {
