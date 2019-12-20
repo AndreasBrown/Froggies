@@ -1,8 +1,9 @@
 <template>
     <section class="c-levels">
-        
-        <LevelLink :id="id" v-for="id in levelIds" :key="'level' + id" />
 
+        <div class="level-link-wrapper" v-for="id in levelIds" :key="'level' + id">
+            <LevelLink :id="id" />
+        </div>
     </section>
 </template>
 
@@ -22,7 +23,8 @@
         async created() {
             let resp = await fetch('/api/levels/ids');
             let json = await resp.json();
-            this.levelIds = json.map(x => Number(x));
+            this.levelIds = json.map((x: string) => Number(x));
+            this.levelIds = this.levelIds.sort((a, b) => a - b);
         }
 
     }
@@ -33,7 +35,19 @@
 <style lang="less" scoped>
 
 .c-levels {
-    margin: 100px;
+    display: flex;
+    flex-flow: row wrap;
+    width: 40%;
+}
+
+.level-link-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @wrapperSize: 150px;
+    width: @wrapperSize;
+    height: @wrapperSize;
 }
 
 </style>
