@@ -40,7 +40,7 @@
 
             this.$emit('levelCompleted');
         }
-        
+
         get greenCount(): number {
             let count = 0;
 
@@ -66,7 +66,7 @@
 
                 onDragEnd: (e: any) => {
                     const pos: string = e.droppedFrogId.substring(e.droppedFrogId.length-2);
-                    const from: Point = { X: Number(pos[1]), Y: Number(pos[0]) } 
+                    const from: Point = { X: Number(pos[1]), Y: Number(pos[0]) }
                     this.move(from, e.position);
                 }
             };
@@ -107,7 +107,7 @@
                 return;
 
             this.setCell(from, CellType.Empty);
-            this.setCell(eat, CellType.Empty); 
+            this.setCell(eat, CellType.Empty);
             this.setCell(to, movedFrog);
 
             this.game.Cells = [...this.grid]; // хак прикол

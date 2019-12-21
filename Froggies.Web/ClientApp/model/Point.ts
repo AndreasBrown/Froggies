@@ -1,4 +1,4 @@
 export default interface Point {
-    X: number, 
+    X: number,
     Y: number
 }

@@ -3,7 +3,7 @@
 
         <transition name="router-anim"
                     mode="out-in"
-                    enter-active-class="animated fadeInDown" 
+                    enter-active-class="animated fadeInDown"
                     leave-active-class="animated fadeOutUp">
             <div class="card overlay-alert">
                 <h2>{{ header }}</h2>

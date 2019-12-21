@@ -1,32 +1,32 @@
 {
-	"version": "1.0.0",
-	"name": "froggies.web",
-	"private": true,
-	"scripts": {
+    "version": "1.0.0",
+    "name": "froggies.web",
+    "private": true,
+    "scripts": {
         "build": "webpack --mode production",
         "dev": "webpack --mode development --watch"
     },
-	"engines": {
-		"node": "8.12.0"
-	},
-	"dependencies": {
-		"@types/node": "^12.0.3",
-		"css-loader": "^2.1.1",
-		"style-resources-loader": "^1.2.1",
-		"vue": "^2.5.13",
-		"vue-class-component": "^7.0.1",
-		"vue-property-decorator": "8.1.1",
-		"vue-router": "3.0.6",
-		"vuex": "^3.1.2"
-	},
-	"devDependencies": {
-		"less": "^3.9.0",
-		"less-loader": "^4.1.0",
-		"ts-loader": "^5.4.5",
-		"typescript": "^3.5.1",
-		"vue-loader": "^15.7.0",
-		"vue-template-compiler": "^2.6.10",
-		"webpack": "^4.29.6",
-		"webpack-cli": "^3.3.0"
-	}
+    "engines": {
+        "node": "8.12.0"
+    },
+    "dependencies": {
+        "@types/node": "^12.0.3",
+        "css-loader": "^2.1.1",
+        "style-resources-loader": "^1.2.1",
+        "vue": "^2.5.13",
+        "vue-class-component": "^7.0.1",
+        "vue-property-decorator": "8.1.1",
+        "vue-router": "3.0.6",
+        "vuex": "^3.1.2"
+    },
+    "devDependencies": {
+        "less": "^3.9.0",
+        "less-loader": "^4.1.0",
+        "ts-loader": "^5.4.5",
+        "typescript": "^3.5.1",
+        "vue-loader": "^15.7.0",
+        "vue-template-compiler": "^2.6.10",
+        "webpack": "^4.29.6",
+        "webpack-cli": "^3.3.0"
+    }
 }

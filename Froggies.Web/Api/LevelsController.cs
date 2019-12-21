@@ -21,7 +21,7 @@ namespace Froggies.Web.Api
                 var fname = f.Split('/').Last();
                 return fname.Split('.').First();
             });
-            
+
             levelIds = levelIds.Where(f => !f.StartsWith('_'));
 
             return this.Ok(levelIds);

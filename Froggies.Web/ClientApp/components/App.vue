@@ -1,14 +1,14 @@
 ﻿<template>
 
-	<div class="page-content">
-		
+    <div class="page-content">
+
         <transition name="router-anim"
                     mode="out-in"
-                    enter-active-class="animated fadeInLeft" 
+                    enter-active-class="animated fadeInLeft"
                     leave-active-class="animated fadeOutRight">
-		    <router-view />
+            <router-view />
         </transition>
-	</div>
+    </div>
 
 </template>
 
@@ -24,11 +24,6 @@ export default class AppComponent extends Vue {
 
 
 <style lang="less">
-
-@import url('../reset.less');
-
-// TODO:
-// layout.less
 
 // -- animations --
 @import 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css';
@@ -52,26 +47,26 @@ export default class AppComponent extends Vue {
 // ---
 
 body {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-	width: 100%;
+    width: 100%;
     height: 100%;
     position: absolute;
 
-	background-color: #fafeff;
-	
-	font-family: 'Montserrat', sans-serif;
-	font-size: 14px;
+    background-color: #fafeff;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
 }
 
 .page-content {
-	background-color: white;
-	width: 100%;
-	height: 100%;
+    background-color: white;
+    width: 100%;
+    height: 100%;
 
-	font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 </style>

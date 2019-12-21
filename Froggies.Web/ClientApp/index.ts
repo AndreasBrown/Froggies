@@ -12,13 +12,13 @@ Vue.config.productionTip = false;
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-	mode: 'history',
-	routes: [
-		{ path: '/', redirect: '/levels' },
-		{ path: '/auth', component: AuthComponent },
-		{ path: '/auth/register', component: RegisterComponent },
-		{ path: '/levels', component: LevelsList },
-		{
+    mode: 'history',
+    routes: [
+        { path: '/', redirect: '/levels' },
+        { path: '/auth', component: AuthComponent },
+        { path: '/auth/register', component: RegisterComponent },
+        { path: '/levels', component: LevelsList },
+        {
             path: '/play/:levelId',
             component: Play,
             props(route: Route) {
@@ -26,11 +26,11 @@ const router = new VueRouter({
                 return { levelId: +levelId };
             }
         },
-	]
+    ]
 });
 
 export default new Vue({
-	el: "#app-root",
+    el: "#app-root",
     render: h => h(AppComponent),
     router,
     store,

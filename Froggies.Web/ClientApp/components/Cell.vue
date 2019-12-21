@@ -1,14 +1,14 @@
 <template>
     <div :class="`cell ${cellDefaultClass} ${cellPropClass}`" @drop="onDrop" @dragover.prevent>
-        
+
         <div v-if="isGreenFrog || isRedFrog"
              :id="cellId"
              :class="`${frogDefaultClass} ${frogPropClass}`"
              @dragstart="dragOptions.onDragStart"
              draggable="true" ref="frog">
-        
+
         </div>
-        
+
     </div>
 </template>
 
@@ -61,7 +61,7 @@
                     return 'cell--with-frog';
             }
         }
-        
+
         get frogDefaultClass() : string {
             switch (this.currentCell) {
                 case CellType.GreenFrog:
@@ -73,7 +73,7 @@
             }
         }
     }
-    
+
 </script>
 
 <style lang="less" scoped>
@@ -86,7 +86,7 @@
 
         background: url('/Assets/lily.svg') no-repeat;
         background-size: contain;
-        
+
         &--water {
             visibility: hidden;
         }
@@ -117,5 +117,5 @@
     .green-frog {
         background-image: url('/Assets/frog.svg');
     }
-    
+
 </style>
