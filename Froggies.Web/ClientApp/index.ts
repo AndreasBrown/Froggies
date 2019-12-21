@@ -1,6 +1,5 @@
 ﻿import Vue from "vue";
 import VueRouter, { Route } from "vue-router";
-import VueDraggable from 'vue-draggable';
 import store from './core/store';
 
 import AppComponent from './components/App.vue';
@@ -11,7 +10,6 @@ import LevelsList from './components/LevelsList/LevelsList.vue';
 
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
-Vue.use(VueDraggable);
 
 const router = new VueRouter({
 	mode: 'history',

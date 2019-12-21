@@ -3,8 +3,11 @@
 	"name": "froggies.web",
 	"private": true,
 	"scripts": {
-		"build": "webpack --mode development",
-		"dev": "webpack --mode development --watch"
+        "build": "webpack --mode production",
+        "dev": "webpack --mode development --watch"
+    },
+	"engines": {
+		"node": "8.12.0"
 	},
 	"dependencies": {
 		"@types/node": "^12.0.3",
@@ -12,10 +15,8 @@
 		"style-resources-loader": "^1.2.1",
 		"vue": "^2.5.13",
 		"vue-class-component": "^7.0.1",
-		"vue-draggable": "^2.0.2",
 		"vue-property-decorator": "8.1.1",
 		"vue-router": "3.0.6",
-		"vuedraggable": "^2.21.0",
 		"vuex": "^3.1.2"
 	},
 	"devDependencies": {
