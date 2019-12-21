@@ -1,7 +1,7 @@
 ﻿<template>
     <section class="play-root">
         <section class="toolbar">
-            <button class="yellow-button refresh-button" @click="onRefreshClick" />
+            <button class="yellow-button refresh-button" @click="initCurrentLevel" />
         </section>
 
         <Grid :game="board"
@@ -19,12 +19,13 @@
 
 <script lang="ts">
 
-    import {Component, Prop, Vue} from 'vue-property-decorator';
+    import {Component, Prop, Vue, Watch} from 'vue-property-decorator';
 
     import Game from '../model/Game';
     import FrogDragOptions from '../model/FrogDragOptions';
     import Grid from './Grid.vue';
     import OverlayAlert from './OverlayAlert.vue';
+    import { Dictionary } from 'vue-router/types/router';
 
     @Component({
         components: { Grid, OverlayAlert }
@@ -39,14 +40,20 @@
 
         isLevelCompleted = false;
 
-        async created() {
-            await this.initCurrentLevel();
+        @Watch('currentLevel', {immediate: true})
+        async initCurrentLevel() {
+            this.$router.replace({params: { levelId: this.currentLevel } as any});
+            await this.initLevel(this.currentLevel);
         }
 
-        async initCurrentLevel() {
-            const json = await this.loadLevel(this.currentLevel);
+        async initLevel(level: number) {
+            const json = await this.loadLevel(level);
             this.board = new Game(json);
             this.isLevelCompleted = false;
+        }
+
+        onLevelCompletedAlertDismiss() {
+            this.currentLevel++;
         }
 
         async loadLevel(level: number) {
@@ -60,24 +67,13 @@
             return await resp.json();
         }
 
-        onRefreshClick() {
-            this.initCurrentLevel();
-        }
-
         onLevelCompleted() {
             this.isLevelCompleted = true;
             this.$store.commit('completeLevel', this.levelId);
         }
-
-        async onLevelCompletedAlertDismiss() {
-            const nextLevel = this.levelId + 1;
-            const isNextLevelLoaded = false && await this.loadLevel(nextLevel); // пока что
-            this.isLevelCompleted = false; // пока что
-        }
     }
 
 </script>
-
 
 <style lang="less" scoped>
 
