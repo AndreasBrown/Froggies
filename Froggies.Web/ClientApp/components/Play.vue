@@ -1,12 +1,11 @@
 ﻿<template>
-    <section class="play-root">
+    <section class="play-root" v-if="board.Cells && board.Cells.length">
         <section class="toolbar">
             <button class="yellow-button refresh-button" @click="initCurrentLevel" />
         </section>
 
         <Grid :game="board"
-              @levelCompleted="onLevelCompleted"
-              v-if="board.Cells"/>
+              @levelCompleted="onLevelCompleted" />
 
         <OverlayAlert v-if="isLevelCompleted"
                       @dismiss="onLevelCompletedAlertDismiss"

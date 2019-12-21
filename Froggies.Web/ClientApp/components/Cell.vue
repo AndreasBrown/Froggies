@@ -4,8 +4,7 @@
         <div v-if="isGreenFrog || isRedFrog"
              :id="cellId"
              :class="`${frogDefaultClass} ${frogPropClass}`"
-             @dragstart="dragOptions.onDragStart"
-             draggable="true" ref="frog">
+             @dragstart="dragOptions.onDragStart">
 
         </div>
 
@@ -38,7 +37,9 @@
 
         onDrop(dropEvent: any) {
             const droppedFrogId: string = dropEvent.dataTransfer.getData('frog');
-            this.$emit('drop', { position: this.position, droppedFrogId });
+
+            this.dragOptions.onDragEnd
+                && this.dragOptions.onDragEnd({ position: this.position, droppedFrogId });
         }
 
         get cellId(): string {

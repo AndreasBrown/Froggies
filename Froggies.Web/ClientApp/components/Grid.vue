@@ -3,11 +3,10 @@
         <div class="board-row" v-for="(row, y) in grid" :key="'ROW-' + y">
 
             <Cell v-for='(cell, x) in row' :key="'CELL-' + cell + y + x"
-                    cellClass="board-cell"
+                    cell-class="board-cell"
                     :currentCell="cell"
                     :position="{ X: x, Y: y}"
-                    :dragOptions="frogDragOptions"
-                    @drop="frogDragOptions.onDragEnd"/>
+                    :dragOptions="frogDragOptions" />
 
         </div>
     </div>
