@@ -1,11 +1,10 @@
 <template>
     <div class="overlay">
 
-        <transition name="router-anim"
-                    mode="out-in"
-                    enter-active-class="animated fadeInDown"
-                    leave-active-class="animated fadeOutUp">
-            <div class="card overlay-alert">
+        <transition name="custom-classes-transition"
+                    enter-active-class="animated fadeInLeft">
+
+            <div class="card overlay-alert" v-show="showWindow">
                 <h2>{{ header }}</h2>
 
                 <section class="content">
@@ -25,10 +24,16 @@
 <script lang="ts">
     import { Component, Prop, Vue } from 'vue-property-decorator';
 
-    @Component({})
+    @Component
     export default class OverlayAlert extends Vue {
-        @Prop({ type: String, required: false })
+        @Prop(String)
         readonly header!: string;
+        
+        showWindow = false;
+
+        mounted() {
+            this.showWindow = true;
+        }
 
         onOkClick() {
             this.$emit('dismiss');
@@ -40,20 +45,13 @@
 <style lang="less" scoped>
     @import 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css';
 
-    @transitionDuration: 50ms;
+    @duration: 0.7s;
 
-    .fadeInDown {
-        -webkit-animation-name: fadeInDown;
-        animation-name: fadeInDown;
-        -webkit-animation-duration: @transitionDuration;
-        animation-duration: @transitionDuration;
-    }
-
-    .fadeOutUp {
-        -webkit-animation-name: fadeOutUp;
-        animation-name: fadeOutUp;
-        -webkit-animation-duration: @transitionDuration;
-        animation-duration: @transitionDuration;
+    .fadeInLeft {
+        -webkit-animation-name: fadeInLeft;
+        animation-name: fadeInLeft;
+        -webkit-animation-duration: @duration;
+        animation-duration: @duration;
     }
 
     .overlay {

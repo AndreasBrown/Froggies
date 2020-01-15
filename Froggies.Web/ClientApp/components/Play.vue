@@ -75,7 +75,6 @@
 </script>
 
 <style lang="less" scoped>
-
     /deep/ .board {
         display: table;
 
